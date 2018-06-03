@@ -1,9 +1,7 @@
-/* eslint-disable */
 import React from 'react';
-import ReactDOM from 'react-dom';
-import MainPage from '../pages/MainPage';
+import createBrowserHistory from 'history/createBrowserHistory';
 import { Router, Route } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory'
+import MainPage from '../pages/MainPage';
 
 const history = createBrowserHistory();
 

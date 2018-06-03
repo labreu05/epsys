@@ -1,5 +1,16 @@
 {
   "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
   "rules": {},
-  "extends": ["airbnb-base"]
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended"
+  ]
 }
