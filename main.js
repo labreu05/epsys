@@ -1,5 +1,8 @@
 // ./main.js
-const {app, BrowserWindow} = require('electron')
+const {
+  app,
+  BrowserWindow
+} = require('electron');
 
 let win = null;
 
