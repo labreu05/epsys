@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as mainActionsCreators from '../actions/mainActions';
+import axios from 'axios';
 
 class MainPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: [] };
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3004/api/users')
+      .then((res) => {
+        this.setState({ data: res.data });
+        console.log(res.data);
+      });
+  }
+
   render() {
+    console.log(this.state);
+
     return (
       <div className="main-page">
-        <button onClick={() => this.props.addTodo('Hey')}>This button</button>
-        {this.props.main.todos.map((value, index) => {
+        {this.state.data.map((value, index) => {
           return (
-            <h1 key={index}>{value}</h1>
+            <h1 key={index}>{value.author}</h1>
           );
         })}
       </div>
@@ -19,20 +30,4 @@ class MainPage extends Component {
   }
 }
 
-const mapStateToProps = ({ main }) => {
-  return {
-    main,
-  };
-};
-
-const mapDispatchToProps = dispatch => bindActionCreators({ ...mainActionsCreators }, dispatch);
-
-MainPage.propTypes = {
-  addTodo: PropTypes.func,
-  main: PropTypes.object,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MainPage);
+export default MainPage;
